@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./docs/logo.png" alt="agDB logo">
+  <img src="https://api.agsolutions.com.br/public/images/agsolutions-logo.png" alt="agDB logo">
 
   <p>🌩️ agDB is a tiny, lightweight, 0 dependency, easy-to-use JSON-based database that allows users to quickly and easily achieve data persistence by provided an engine to store and access JSON data for NodeJS the browser or Electron.</p>
 
