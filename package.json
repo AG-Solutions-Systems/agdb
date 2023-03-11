@@ -10,7 +10,7 @@
     "format": "prettier --write {**,**/**}/*.{js,md}",
     "test": "mocha ./tests --recursive --exit"
   },
-  "repository": "TomPrograms/agdb",
+  "repository": "AleeQuintino/agdb",
   "files": [
     "index.js",
     "index.d.ts",
