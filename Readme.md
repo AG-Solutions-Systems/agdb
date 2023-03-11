@@ -25,13 +25,13 @@ db.get("users")
   .save();
 ```
 
-## Features
+## Características
 
 - 🏎️ Velocidades incrivelmente rápidas - Velocidades de leitura e gravação rápidas, mesmo ao lidar com grandes volumes de dados.
 - 📦 [Tamanho minúsculo](https://bundlephobia.com/result?p=agdb) - O tamanho minúsculo do código-fonte permite um carregamento incrivelmente rápido quando a velocidade é importante.
 - ⚡️ Versátil - Pode ser usado com NodeJS, no navegador ou no Electron.
 
-## Usage
+## Uso
 
 instale agDB com NPM:
 
