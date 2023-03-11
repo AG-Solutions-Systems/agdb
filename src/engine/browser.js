@@ -24,7 +24,7 @@ module.exports = class LocalEngine {
       return json;
     } catch (error) {
       error.message =
-        "Failed to load StormDB database file - invalid or corrupted format.";
+        "Failed to load agDB database file - invalid or corrupted format.";
       throw error;
     }
   }

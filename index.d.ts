@@ -1,20 +1,20 @@
-declare module 'stormdb' {
-  class StormDB {
+declare module 'agdb' {
+  class agDB {
     constructor(engine: LocalFileEngine, options?: object);
 
     static browserEngine: typeof BrowserEngine;
     static localFileEngine: typeof LocalFileEngine;
 
-    default(defaultValue: object): StormDB;
-    length(): StormDB;
+    default(defaultValue: object): agDB;
+    length(): agDB;
     delete(reindexLists: boolean): void;
     push(value: any): void;
-    get(value: any, dotNotation?: boolean): StormDB;
-    set(key: any, value?: any, dotNotation?: boolean): StormDB;
-    map<T>(func: (value: any, index?: number, array?: any[]) => T): StormDB;
-    sort<T>(func: (a: T, b: T) => number): StormDB;
-    filter<T, S extends T>(func: (value: T, index?: number, array?: T[]) => value is S): StormDB;
-    reduce(func: any): StormDB;
+    get(value: any, dotNotation?: boolean): agDB;
+    set(key: any, value?: any, dotNotation?: boolean): agDB;
+    map<T>(func: (value: any, index?: number, array?: any[]) => T): agDB;
+    sort<T>(func: (a: T, b: T) => number): agDB;
+    filter<T, S extends T>(func: (value: T, index?: number, array?: T[]) => value is S): agDB;
+    reduce(func: any): agDB;
     value(): any;
     setValue(value: any, pointers: any[], setRecursively?: boolean): void;
     save(): Promise<void> | null;
@@ -34,5 +34,5 @@ declare module 'stormdb' {
     write(data: any): Promise<void> | null;
   }
 
-  export = StormDB;
+  export = agDB;
 }

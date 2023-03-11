@@ -1,13 +1,13 @@
 <div align="center">
-  <img src="./docs/logo.png" alt="StormDB logo">
+  <img src="./docs/logo.png" alt="agDB logo">
 
-  <p>🌩️ StormDB is a tiny, lightweight, 0 dependency, easy-to-use JSON-based database that allows users to quickly and easily achieve data persistence by provided an engine to store and access JSON data for NodeJS the browser or Electron.</p>
+  <p>🌩️ agDB is a tiny, lightweight, 0 dependency, easy-to-use JSON-based database that allows users to quickly and easily achieve data persistence by provided an engine to store and access JSON data for NodeJS the browser or Electron.</p>
 
-  <a href="https://npmjs.com/package/stormdb">
-    <img src="https://img.shields.io/npm/v/stormdb?color=green">
+  <a href="https://npmjs.com/package/agdb">
+    <img src="https://img.shields.io/npm/v/agdb?color=green">
   </a>
-  <a href="https://bundlephobia.com/result?p=stormdb">
-    <img src="https://img.shields.io/bundlephobia/minzip/stormdb?color=green">
+  <a href="https://bundlephobia.com/result?p=agdb">
+    <img src="https://img.shields.io/bundlephobia/minzip/agdb?color=green">
   </a>
   <img src="https://img.shields.io/badge/dependencies-0-brightgreen?color=blue">
   <a href="./LICENSE">
@@ -17,7 +17,7 @@
 
 <br>
 
-<p> Try it online now: <a href="https://tomprograms.github.io/stormdb">Demo Page and Interactive Playground!</a></p>
+<p> Try it online now: <a href="https://tomprograms.github.io/agdb">Demo Page and Interactive Playground!</a></p>
 
 > Example: Add a post entry under users.tom and save it to the database.
 
@@ -31,25 +31,25 @@ db.get("users")
 ## Features
 
 - 🏎️ Blazingly Fast Speeds - Fast read and write speeds, even when handling large data.
-- 📦 [Tiny Size](https://bundlephobia.com/result?p=stormdb) - Tiny source code size allows for blazingly fast loading when speed matters.
+- 📦 [Tiny Size](https://bundlephobia.com/result?p=agdb) - Tiny source code size allows for blazingly fast loading when speed matters.
 - ⚡️ Versatile - Can be used with NodeJS, in the browser or in Electron.
 
 ## Usage
 
-Install StormDB through NPM:
+Install agDB through NPM:
 
 ```
-$ npm i stormdb
+$ npm i agdb
 ```
 
 Basic usage with NodeJS:
 
 ```js
-const StormDB = require("stormdb");
+const agDB = require("agdb");
 
-// start db with "./db.stormdb" storage location
-const engine = new StormDB.localFileEngine("./db.stormdb");
-const db = new StormDB(engine);
+// start db with "./db.agdb" storage location
+const engine = new agDB.localFileEngine("./db.agdb");
+const db = new agDB(engine);
 
 // set default db value if db is empty
 db.default({ users: [] });
@@ -67,7 +67,7 @@ db.get("users")
 db.save();
 ```
 
-The `db.stormdb` database file is updated to:
+The `db.agdb` database file is updated to:
 
 ```js
 {
@@ -80,18 +80,18 @@ The `db.stormdb` database file is updated to:
 Typescript Usage:
 
 ```ts
-import StormDB from "stormdb";
+import agDB from "agdb";
 
-// start db with "./db.stormdb" storage location
-const engine = new StormDB.localFileEngine("./db.stormdb");
-const db = new StormDB(engine);
+// start db with "./db.agdb" storage location
+const engine = new agDB.localFileEngine("./db.agdb");
+const db = new agDB(engine);
 ```
 
-StormDB is designed to be flexible, and can be used in NodeJS, the browser or even Electron with very small adaptations to the code. Examples usages can be seen below:
+agDB is designed to be flexible, and can be used in NodeJS, the browser or even Electron with very small adaptations to the code. Examples usages can be seen below:
 
 - [Browser Usage](./examples/browser.md)
 - [NodeJS Server](./examples/node.md)
-- [Online Demo and Playground](https://tomprograms.github.io/stormdb)
+- [Online Demo and Playground](https://tomprograms.github.io/agdb)
 
 ## Engine API
 
@@ -250,7 +250,7 @@ db.save();
 Leverage Serialize and Deserialize functions to encrypt and decrypt data:
 
 ```js
-const engine = new StormDB.localFileEngine("./db.stormdb", {
+const engine = new agDB.localFileEngine("./db.agdb", {
   serialize: data => {
     // encrypt and serialize data
     return encrypt(JSON.stringify(data));
@@ -260,7 +260,7 @@ const engine = new StormDB.localFileEngine("./db.stormdb", {
     return JSON.parse(decrypt(data));
   }
 });
-const db = new StormDB(engine);
+const db = new agDB(engine);
 ```
 
 ## Credit

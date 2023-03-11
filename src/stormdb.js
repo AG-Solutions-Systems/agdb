@@ -1,4 +1,4 @@
-class StormDB {
+class agDB {
   constructor(engine) {
     this.engine = engine;
 
@@ -166,4 +166,4 @@ class StormDB {
   }
 }
 
-module.exports = StormDB;
+module.exports = agDB;
