@@ -1,6 +1,6 @@
 <div align="center">
 
-  <p>🌩️ agDB is a tiny, lightweight, 0 dependency, easy-to-use JSON-based database that allows users to quickly and easily achieve data persistence by provided an engine to store and access JSON data for NodeJS the browser or Electron.</p>
+  <p>🌩️ AgDB é um banco de dados baseado em JSON pequeno, leve, 0 dependências e fácil de usar que permite aos usuários obter persistência de dados de forma rápida e fácil, fornecendo um mecanismo para armazenar e acessar dados JSON para NodeJS.</p>
 
   <a href="https://npmjs.com/package/agdb">
     <img src="https://img.shields.io/npm/v/agdb?color=green">
@@ -16,57 +16,55 @@
 
 <br>
 
-<p> Try it online now: <a href="https://tomprograms.github.io/agdb">Demo Page and Interactive Playground!</a></p>
-
-> Example: Add a post entry under users.tom and save it to the database.
+> Exemplo: adicione um post em users.alee e salve no banco de dados.
 
 ```js
 db.get("users")
-  .get("tom")
+  .get("alee")
   .push({ title: "Post 1" })
   .save();
 ```
 
-## Features
+## Características
 
-- 🏎️ Blazingly Fast Speeds - Fast read and write speeds, even when handling large data.
-- 📦 [Tiny Size](https://bundlephobia.com/result?p=agdb) - Tiny source code size allows for blazingly fast loading when speed matters.
-- ⚡️ Versatile - Can be used with NodeJS, in the browser or in Electron.
+- 🏎️ Velocidades incrivelmente rápidas - Velocidades de leitura e gravação rápidas, mesmo ao lidar com grandes volumes de dados.
+- 📦 [Tamanho minúsculo](https://bundlephobia.com/result?p=agdb) - O tamanho minúsculo do código-fonte permite um carregamento incrivelmente rápido quando a velocidade é importante.
+- ⚡️ Versátil - Pode ser usado com NodeJS, no navegador ou no Electron.
 
-## Usage
+## Uso
 
-Install agDB through NPM:
+instale agDB com NPM:
 
 ```
 $ npm i agdb
 ```
 
-Basic usage with NodeJS:
+Uso básico com NodeJS:
 
 ```js
 const agDB = require("agdb");
 
-// start db with "./db.agdb" storage location
+// iniciar db com "./db.agdb" local de armazenamento
 const engine = new agDB.localFileEngine("./db.agdb");
 const db = new agDB(engine);
 
-// set default db value if db is empty
+// definir valor db padrão se a db estiver vazia
 db.default({ users: [] });
 
-// add new users entry
-db.get("users").push({ name: "tom" });
+// add novo dado em users
+db.get("users").push({ name: "alee" });
 
-// update username of first user
+// atualizar users.name do primeiro usuário
 db.get("users")
   .get(0)
   .get("name")
   .set("jeff");
 
-// save changes to db
+// salvar alterações na db
 db.save();
 ```
 
-The `db.agdb` database file is updated to:
+O arquivo de banco de dados `db.agdb` é atualizado para:
 
 ```js
 {
@@ -76,196 +74,194 @@ The `db.agdb` database file is updated to:
 }
 ```
 
-Typescript Usage:
+Uso com Typescript:
 
 ```ts
 import agDB from "agdb";
 
-// start db with "./db.agdb" storage location
+// iniciar db com "./db.agdb" local de armazenamento
 const engine = new agDB.localFileEngine("./db.agdb");
 const db = new agDB(engine);
 ```
 
-agDB is designed to be flexible, and can be used in NodeJS, the browser or even Electron with very small adaptations to the code. Examples usages can be seen below:
-
-- [Browser Usage](./examples/browser.md)
-- [NodeJS Server](./examples/node.md)
-- [Online Demo and Playground](https://tomprograms.github.io/agdb)
+O agDB foi projetado para ser flexível, podendo ser usado no NodeJS, no navegador ou até mesmo no Electron com adaptações muito pequenas no código. Exemplos de usos podem ser vistos abaixo:
+- [Uso do navegador](./examples/browser.md)
+- [Servidor NodeJS](./examples/node.md)
 
 ## Engine API
 
-For expanding functionality, each database initialized can be expanded with the following options, in the format `new Engine(path, options);`.
+Para expandir a funcionalidade, cada banco de dados inicializado pode ser expandido com as seguintes opções, no formato `new Engine(path, options);`.
 
-- `serialize` - function to serialize data before writing it to the database.
-- `deserialize` - function to deserialize data from the database.
+- `serialize` - função para serializar dados antes de escrevê-los no banco de dados.
+- `deserialize` - função para desserializar dados do banco de dados.
 
-## Database Operations Examples
+## Exemplos de operações de banco de dados
 
-Change Value of Key in Database:
+Altere o valor da chave no banco de dados:
 
 ```js
 db.get("old").set("newData");
-// before: {"old": "oldData"}
-// after: {"old": "newData"}
+// Antes: {"old": "oldData"}
+// Depois: {"old": "newData"}
 ```
 
-Return the Raw Value of a Selected Property:
+Retornar o valor Raw de uma propriedade selecionada:
 
 ```js
-// before {"list": [1, 2, 3]}
+// Antes {"list": [1, 2, 3]}
 db.get("list").value(); // returns [1, 2, 3]
 ```
 
-Set Key-Value Pair on Dictionary Property:
+Defina um valor para a chave:
 
 ```js
-db.set("key", "value").save();
-// before: {}
-// after: {"key": "value"}
+db.set("chave", "valor").save();
+// Antes: {}
+// Depois: {"chave": "valor"}
 ```
 
-Delete Value:
+Deletar um valor:
 
 ```js
-db.get("key").delete();
-// before: {'key': 'value', 'key2': 'value2'}
-// after: {'key2': 'value2'}
+db.get("chave").delete();
+// Antes: {'chave': 'valor', 'chave2': 'valor2'}
+// Depois: {'chave2': 'valor2'}
 ```
 
-If you delete a value from a list, it will leave a null value in the place of the deleted data:
+Se você excluir um valor de uma lista, ele deixará um valor nulo no lugar dos dados excluídos:
 
 ```js
-db.get("key")
+db.get("chave")
   .get(1)
   .delete();
-// before: {'key': [1, 2, 3]}
-// after: {'key2': [1, null, 3]}
+// Antes: {'chave': [1, 2, 3]}
+// Depois: {'chave': [1, null, 3]}
 ```
 
-If you don't want this behaviour, you can pass in `true` to the `.delete()` function to not leave a null value in place of the deleted data:
+Se você não quer este comportamento, você pode passar `true` para a função `.delete()` para não deixar um valor nulo no lugar dos dados excluídos:
 
 ```js
-db.get("key")
+db.get("chave")
   .get(1)
   .delete(true);
-// before: {'key': [1, 2, 3]}
-// after: {'key2': [1, 3]}
+// Antes: {'chave': [1, 2, 3]}
+// Depois: {'chave': [1, 3]}
 ```
 
-Set Key-Value Pair on dictionary with dot notation shorthand:
+Defina um valor para a chave2 dentro da chave:
 
 ```js
-db.set("key.key2", "value").save();
-// before: {}
-// after: {"key": {"key2": "value"}}
+db.set("chave.chave2", "valor").save();
+// Antes: {}
+// Depois: {"chave": {"chave2": "valor"}}
 ```
 
-Note, that the `set` and `get` functions allow for dot notation for the keys, if you don't want this behaviour, as you may have a key with a dot in it, you can disable it by providing an extra parameter:
+Observe que as funções `set` e `get` permitem o uso de . para as chaves, se você não quiser esse comportamento, você pode ter uma chave com um . incluso, você pode desativar fornecendo um parâmetro extra :
 
 ```js
-db.get("one.two", false).set("three.four", "test", false);
-// before: {"one.two": {}}
-// after: {"one.two": {"three.four": "test"}}
+db.get("um.dois", false).set("tres.quatro", "teste", false);
+// Antes: {"um.dois": {}}
+// Depois: {"um.dois": {"tres.quatro": "teste"}}
 ```
 
-Set Default Data for Empty Database:
+Definir dados padrão para db vazia:
 
 ```js
-db.default({ name: "tom" });
+db.default({ name: "alee" });
 
-// actual db: {}
-console.log(db.get("name")); // prints "tom"
+// atual db: {}
+console.log(db.get("name")); // imprime "alee"
 ```
 
-Push Item to Array Property:
+Executar um Push no Array:
 
 ```js
-db.get("list")
+db.get("lista")
   .push(1)
   .save();
 
-// before: {'list': []}
-// after: {'list': [1]}
+// Antes: {'lista': []}
+// Depois: {'lista': [1]}
 ```
 
-Filter Out All Elements under 5:
+Filtrar todos os elementos abaixo de 5:
 
 ```js
-// before = {'list': [1,2,6,1]}
+// Antes = {'list': [1,2,6,1]}
 // output = {'list': [6]}
 
-db.get("list").filter(i => i >= 5);
+db.get("lista").filter(i => i >= 5);
 
-// save db
+// salvar db
 db.save();
 ```
 
-Change Element with Highest Value:
+Alterar elemento com valor mais alto:
 
 ```js
-// before = {'users': [{value: 10}, {value: 5}, {value: 6}]}
-// after = {'users': [{value: "changed"}, {value: 6}, {value: 5}]}
+// Antes = {'users': [{valor: 10}, {valor: 5}, {valor: 6}]}
+// Depois = {'users': [{valor: "alterado"}, {valor: 6}, {valor: 5}]}
 
-db.get("users").sort((a, b) => b.value - a.value);
+db.get("users").sort((a, b) => b.valor - a.valor);
 
-// change value of highest element
+// Alterar elemento com valor mais alto
 db.get("users")
   .get(0)
-  .get("value")
-  .set("changed");
+  .get("valor")
+  .set("alterado");
 
-// save db
+// salvar db
 db.save();
 ```
 
-Map List, Squaring Each Number in List:
+Execute um Map em uma Lista, e resulte a raiz quadrada de todos os números na lista:
 
 ```js
-// before = {'data': [1,2,3,4,5]}
-// after = {'data': [1,4,9,16,25]}
+// Antes = {'data': [1,2,3,4,5]}
+// Depois = {'data': [1,4,9,16,25]}
 
-// square each number in the list
+// raiz quadrada de todos os números na lista
 db.get("data").map(x => x ** 2);
 
-// save db
+// salvar db
 db.save();
 ```
 
-Reduce List, Finding Value of All Values in List Summed:
+Reduzir lista, encontrando todos os valores da lista e os somando:
 
 ```js
-// before = {'data': [1,2,3,4,5]}
-// after = {'data': 15}
+// Antes = {'data': [1,2,3,4,5]}
+// Depois = {'data': 15}
 
 // find value of all numbers in list summed together
 db.get("data").reduce(
-  (accumulator, currentValue) => accumulator + currentValue
+  (total, atual) => total + atual
 );
 
-// save db
+// salvar db
 db.save();
 ```
 
-Leverage Serialize and Deserialize functions to encrypt and decrypt data:
+Aproveite as funções Serialize e Deserialize para criptografar e descriptografar dados:
 
 ```js
 const engine = new agDB.localFileEngine("./db.agdb", {
   serialize: data => {
-    // encrypt and serialize data
+    // criptografar e serializar dados
     return encrypt(JSON.stringify(data));
   },
   deserialize: data => {
-    // decrypt and deserialize data
+    // descriptografar e desserializar dados
     return JSON.parse(decrypt(data));
   }
 });
 const db = new agDB(engine);
 ```
 
-## Credit
+## Crédito
 
-Author: [Tom](https://github.com/TomPrograms)
+Autor: [Tom](https://github.com/TomPrograms) Colaborador - Reeditor: [AleeQuintino](https://github.com/TomPrograms)
 
-## License
+## Licença
 
 [MIT](LICENSE)
