@@ -1,11 +1,11 @@
 {
   "name": "agdb",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "agDB is a tiny, lightweight, 0 dependency, easy-to-use JSON-based database for NodeJS, the browser or Electron.",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "",
+    "build": "webpack --config webpack.config.js",
     "prepublishOnly": "npm run build",
     "format": "prettier --write {**,**/**}/*.{js,md}",
     "test": "mocha ./tests --recursive --exit"
